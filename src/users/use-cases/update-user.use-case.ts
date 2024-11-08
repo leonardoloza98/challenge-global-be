@@ -1,3 +1,4 @@
+import { IUserUpdateBody } from "../models/userBody";
 import IUserService from "../models/userService";
 
 export class UpdateUserUseCase {
@@ -5,7 +6,7 @@ export class UpdateUserUseCase {
     constructor(userService: IUserService){
         this.userService = userService
     }
-    async run(id: string, body: any){
+    async run(id: string, body: IUserUpdateBody){
         return this.userService.update(id, body)
     }
 }

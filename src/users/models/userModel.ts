@@ -4,6 +4,7 @@ export interface IUser extends Document {
     name: string;
     email: string;
     age: string;
+    profileId: mongoose.Schema.Types.ObjectId;
     createdAt: Date;
     updatedAt: Date;
     deletedAt?: Date;
@@ -26,6 +27,10 @@ const UserSchema: Schema = new Schema(
         age: {
             type: Number,
             required: true,
+        },
+        profileId: { 
+            type: Schema.Types.ObjectId,
+            ref: 'Profile' 
         },
         deletedAt: {
             type: Date,

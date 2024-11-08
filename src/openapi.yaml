@@ -93,6 +93,31 @@ paths:
           description: Usuario eliminado correctamente
         '404':
           description: Usuario no encontrado
+  /api/profiles:
+    post:
+      summary: Create profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        '201':
+          description: Perfil creado correctamente
+        '400':
+          description: Datos inválidos
+    get:
+      summary: Get all profiles
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
 components:
   schemas:
     User:
@@ -106,8 +131,22 @@ components:
         email:
           type: string
         age:
-          type: integer  # Cambié esto a integer para representar mejor la edad
+          type: integer
       required:
         - name
         - email
+        - age
+    Profile:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        code:
+          type: string
+      required:
+        - name
+        - code
         - age
