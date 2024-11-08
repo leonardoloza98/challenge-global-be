@@ -131,11 +131,14 @@ components:
         email:
           type: string
         age:
-          type: integer
+          type: string
+        profileId:
+          type: string
       required:
         - name
         - email
         - age
+        - profileId
     Profile:
       type: object
       properties:
@@ -149,4 +152,3 @@ components:
       required:
         - name
         - code
-        - age

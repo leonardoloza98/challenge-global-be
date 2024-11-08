@@ -9,34 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class UserService {
-    constructor(userModel) {
-        this.userModel = userModel;
+class ProfileService {
+    constructor(userProfile) {
+        this.userProfile = userProfile;
     }
     create(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.create(data);
+            return this.userProfile.create(data);
         });
     }
-    update(id, data) {
+    getAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.findByIdAndUpdate(id, data, { new: true });
-        });
-    }
-    delete(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.findByIdAndUpdate(id, { deletedAt: new Date() });
-        });
-    }
-    getAll(search) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.find({ deletedAt: { $exists: false }, name: { $regex: search !== null && search !== void 0 ? search : '', $options: 'i' } });
-        });
-    }
-    getById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.findById(id);
+            return this.userProfile.find();
         });
     }
 }
-exports.default = UserService;
+exports.default = ProfileService;
