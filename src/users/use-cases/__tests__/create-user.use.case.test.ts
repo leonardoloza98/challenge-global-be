@@ -12,8 +12,8 @@ const mockUserService = {
 describe('CreateUserUseCase', () => {
     it('should create a new user', async () => {
         const createUserUseCase = new CreateUserUseCase(mockUserService);
-        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: 30, profile: 'developer' };
-        const expectedUser = { name: 'Leo', email: 'leo@gmail.com', age: 30, profile: 'developer' };
+        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: '30', profile: 'developer' };
+        const expectedUser = { name: 'Leo', email: 'leo@gmail.com', age: '30', profile: 'developer' };
 
         mockUserService.create.mockResolvedValue(expectedUser);
         const result = await createUserUseCase.run(mockUser);
@@ -22,8 +22,8 @@ describe('CreateUserUseCase', () => {
     });
     it('should doesnt create a new user', async () => {
         const createUserUseCase = new CreateUserUseCase(mockUserService);
-        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: 30, profile: 'developer' };
-        const expectedUser = { name: 'Leo', email: 'leo@gmail2.com', age: 30, profile: 'developer' };
+        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: '30', profile: 'developer' };
+        const expectedUser = { name: 'Leo', email: 'leo@gmail2.com', age: '30', profile: 'developer' };
 
         mockUserService.create.mockResolvedValue(expectedUser);
         const result = await createUserUseCase.run(mockUser);
@@ -32,8 +32,8 @@ describe('CreateUserUseCase', () => {
     });
     it('service should be called with mockUser', async () => {
         const createUserUseCase = new CreateUserUseCase(mockUserService);
-        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: 30, profile: 'developer' };
-        const expectedUser = { name: 'Leo', email: 'leo@gmail2.com', age: 30, profile: 'developer' };
+        const mockUser = { name: 'Leo', email: 'leo@gmail.com', age: '30', profile: 'developer' };
+        const expectedUser = { name: 'Leo', email: 'leo@gmail2.com', age: '30', profile: 'developer' };
 
         mockUserService.create.mockResolvedValue(expectedUser);
         await createUserUseCase.run(mockUser);

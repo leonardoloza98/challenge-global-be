@@ -17,7 +17,7 @@ export default class UserService implements IUserService{
         return this.userModel.findByIdAndUpdate(id, { deletedAt: new Date() });
     }
     async getAll(search?: string): Promise<IUser[]>{
-        return this.userModel.find({ deletedAt: { $exists: false }, name: {$regex: search, $options: 'i'} });
+        return this.userModel.find({ deletedAt: { $exists: false }, name: {$regex: search ?? '', $options: 'i'} });
     }
     async getById(id:string): Promise<IUser|null>{
         return this.userModel.findById(id)
